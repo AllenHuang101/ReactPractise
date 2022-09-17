@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          message: "Hello World",
+          names: ["abc", "cba", "test"],
+          aaa: undefined,
+          bbb: null,
+          ccc: true,
+          friend: { name: "kobe" },
+          firstName: "Allen",
+          lastName: "Huang",
+          age: 20,
+          movies: ["流量地球", "星際穿越", "獨行月球"]
+        }
+      }
+
+
+      render() {
+        const { message, names } = this.state;
+        const { aaa, bbb, ccc } = this.state
+        const { friend } = this.state;
+        const { firstName, lastName } = this.state;
+        const fullName = firstName + " " + lastName;
+        const { age } = this.state;
+        const ageText = age >= 18 ? "成年人" : "未成年人";
+        const liEls = this.state.movies.map(movie => <li key={movie}>{movie}</li>);
+
+        return (
+          <div>
+            {/*1. Number/String/Array 直接顯示出來*/}
+            <h2>{message}</h2>
+            <h2>{names}</h2>
+
+            {/*2. null/undefined/bool 不會顯示*/}
+            <h2>{aaa}</h2>
+            <h2>{bbb}</h2>
+            <h2>{ccc}</h2>
+
+            {/*2. 若需要顯示出來需要轉成字串*/}
+            <h2>{String(aaa)}</h2>
+            <h2>{bbb + ""}</h2>
+            <h2>{ccc.toString()}</h2>
+
+            {/*3.Object類型不能作為子元素進行顯示*/}
+            <h2>{friend.name}</h2>
+            <h2>{Object.keys(friend)[0]}</h2>
+
+            {/*4.可以插入對應的表達式*/}
+            <h2>{10 + 20}</h2>
+            <h2>{firstName + lastName}</h2>
+            <h2>{fullName}</h2>
+
+            {/*5.可以插入三元運算符*/}
+            <h2>{age > 18 ? "成年人" : "未成年人"}</h2>
+            <h2>{ageText}</h2>
+            <ul>{liEls}</ul>
+            <ul>{this.getMovieEls()}</ul>
+          </div>
+        )
+      }
+
+      getMovieEls() {
+        const liEls = this.state.movies.map(movie => <li key={movie}>{movie}</li>);
+        return liEls;
+      }
+
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          message: "Hello World",
+        }
+      }
+
+
+      render() {
+        const { message } = this.state;
+
+        // jsx書寫規範
+        // 1.jsx結構只能有一個根元素
+        // 2.結構通常會包裹一個()，將整個jsx當作一個整體，實現換行
+        // 3.jsx可以是單標籤, 也可以是雙標籤, 但是單標籤必須以/>結尾
+        return (
+          <div>
+            <h2>{message}</h2>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

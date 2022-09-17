@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          message: "Hello World",
+        }
+      }
+
+      btnClick(event, name, age) {
+        console.log('btnClick:', event, this, name, age);
+      }
+
+      render() {
+        const { message } = this.state;
+
+        return (
+          <div>
+            {/* 1. event參數傳遞 */}
+            <button onClick={this.btnClick.bind(this)}>按鈕1</button>
+            <button onClick={(event) => this.btnClick(event)}>按鈕2</button>
+
+            {/* 2. 額外的參數傳遞 */}
+            <button onClick={this.btnClick.bind(this, "Allen", 18)}>按鈕3(不推薦)</button>
+            <button onClick={(event) => this.btnClick(event, "Allen", 18)}>按鈕3</button>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          movies: ['星際穿越', '流浪地球', '獨行月球', '大話西遊', '火星救援'],
+        }
+      }
+
+      render() {
+        // const liEls = [];
+        // // 1. 對 movies 進行 for 循環
+        // for (let i = 0; i < this.state.movies.length; i++) {
+        //   const movie = this.state.movies[i];
+        //   const liE1 = <li>{movie}</li>;
+        //   liEls.push(liE1);
+
+
+        // 2. movies 數組
+        // const liEls = this.state.movies.map(movie => <li>{movie}</li>)
+        return (
+          <div>
+            <h2>電影列表</h2>
+            <ul>
+              {this.state.movies.map(movie => <li>{movie}</li>)}
+            </ul>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

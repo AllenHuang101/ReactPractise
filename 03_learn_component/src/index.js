@@ -1,0 +1,21 @@
+import ReactDOM from 'react-dom/client';
+// import App from './App_class';
+// import App from './App_func';
+// import App from './02_組件生命週期函數/App';
+// import App from './03_組件開發嵌套關係/App';
+// import App from './04_組件通訊-父傳子/App';
+// import App from './05_組件通訊-子傳父/App';
+// import App from './06_組件通訊案例練習/App';
+// import App from './13_數據不可變的力量/App';
+// import App from './07_組件的插槽實現/App';
+// import App from './08_組件的作用域插槽/App';
+// import App from './09_非父子通信-Context/App';
+// import App from './10_非父子通信-EventBus/App';
+// import App from './11_setState詳細使用/App';
+// import App from './12_render函數的優化/App';
+// import App from './14_ref獲取DOM和組件/02_ref獲取組件';
+// import App from './15_受控和非受控組件/App';
+import App from './16_React高階組件/App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App name="why" />);

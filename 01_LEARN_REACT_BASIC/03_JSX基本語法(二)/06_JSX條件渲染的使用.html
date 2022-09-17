@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          message: "Hello World",
+          isReady: true,
+          friend: {
+            name: "kobe",
+            desc: "凌晨四點鐘的太陽"
+          }
+        }
+      }
+
+      render() {
+        const { isReady, friend } = this.state;
+
+        let showElement = null;
+        if (isReady) {
+          showElement = <h2>準備開始</h2>
+        } else {
+          showElement = <h1>請提前準備</h1>
+        }
+
+        return (
+          <div>
+            {/*方式一: 根據條件給變量賦值不同的內容*/}
+            <h2>{showElement}</h2>
+            {/*方式二: 根據條件給變量賦值不同的內容*/}
+            <div>{isReady ? <button>開始戰鬥</button> : <h3>趕緊準備</h3>}</div>
+            {/*方式三: &&邏輯與運算*/}
+            {/*場景: 當某一個值，有可能為undefined，使用&&進行條件判斷*/}
+            <div>{friend && <div>{friend.name + "  " + friend.desc}</div>}</div>
+          </div>
+        )
+      }
+
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>

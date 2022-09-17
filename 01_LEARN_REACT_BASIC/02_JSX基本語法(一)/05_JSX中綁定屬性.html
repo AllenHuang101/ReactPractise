@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 1. 創建 root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          title: "Hello World",
+          imgUrl: "https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fstorage.googleapis.com%2Fopinion-cms-cwg-tw%2Farticle%2F201903%2Farticle-5c8757cba50c3.jpg/?w=900&format=webp",
+          href: "https://www.baidu.com",
+          isActive: true,
+          objStyle: { color: "red", fontSize: "30px" },
+        }
+      }
+
+
+      render() {
+        const { title, imgUrl, href, isActive, objStyle } = this.state;
+
+        //1.class綁定的寫法一:字符串的拼接
+        const className = `abc cba ${isActive ? 'Active' : ''}`;
+
+        //2.class綁定的寫法二:將所有的class放到數組中
+        const classList = ["abc", "cba"];
+        if (isActive) classList.push("active");
+
+
+        return (
+          <div>
+            {/*1.基本綁定*/}
+            <h2 title={title}>我式h2元素</h2>
+            {/*<img src={imgUrl} />*/}
+            <a href={href}>百度一下</a>
+
+            {/*2.綁定class屬性*/}
+            <h2 className={classList.join(" ")}>哈哈铪</h2>
+
+            {/*3.綁定style屬性*/}
+            <h2 style={{ color: "red", fontSize: "30px" }}>呵呵呵</h2>
+            <h2 style={objStyle}>呵呵呵</h2>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
