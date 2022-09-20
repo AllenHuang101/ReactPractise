@@ -7,7 +7,8 @@ import App from '@/App';
 import 'normalize.css';
 import './assets/css/index.less';
 import store from './store';
-
+import { ThemeProvider } from 'styled-components';
+import theme from './assets/theme';
 // @ => src: webpack
 // 問題: react腳手架預設隱藏webpack
 // 解決一: npm run eject
@@ -18,9 +19,11 @@ root.render(
   // <React.StrictMode>
   <Suspense fallback="loading">
     <Provider store={store}>
-      <HashRouter>
-        <App />
-      </HashRouter>
+      <ThemeProvider theme={theme}>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </ThemeProvider>
     </Provider>
   </Suspense>
   // </React.StrictMode>
